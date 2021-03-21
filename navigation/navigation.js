@@ -131,7 +131,7 @@ const TabsNavigator = () => {
 						);
 					},
 					tabBarColor:
-						Colors.primaryColor,
+						Colors.accentColor,
 				}}
 			/>
 			<Tabs.Screen
@@ -164,7 +164,7 @@ const TabsNavigator = () => {
 						);
 					},
 					tabBarColor:
-						Colors.accentColor,
+						Colors.primaryColor,
 				}}
 			/>
 		</Tabs.Navigator>

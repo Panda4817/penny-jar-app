@@ -29,7 +29,7 @@ const JarScreen = (props) => {
                                 style={styles.addButton} 
                                 onPress={addPennyHandler}
                             >
-                                <Ionicons name="add-circle-outline" size={100} color="white" />
+                                <Ionicons name="add-circle-outline" size={100} color={Colors.accentColor} />
                             </CustomButton>
                         </View>
                         
