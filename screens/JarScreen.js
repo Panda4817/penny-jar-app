@@ -1,5 +1,5 @@
-import React, { useCallback } from 'react';
-import { View, Text, ScrollView, Button, ImageBackground, StyleSheet, Dimensions} from 'react-native';
+import React from 'react';
+import { View, Text, ScrollView, ImageBackground, StyleSheet, Dimensions} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import Colors from "../constants/Colors";
 import CustomButton from "../components/CustomButton/CustomButton";
@@ -10,13 +10,13 @@ const JarScreen = (props) => {
     const pennies = useSelector(state => state.jar.pennies)
 
     const dispatch = useDispatch();
-    const addPennyHandler = useCallback(() => {
+    const addPennyHandler = () => {
 		dispatch(addPenny());
-	}, [dispatch]);
+	};
 
-    const resetJarHandler = useCallback(() => {
+    const resetJarHandler = () => {
 		dispatch(resetJar());
-	}, [dispatch]);
+	};
 
     return (
         <ScrollView>
@@ -29,7 +29,7 @@ const JarScreen = (props) => {
                                 style={styles.addButton} 
                                 onPress={addPennyHandler}
                             >
-                                <Ionicons name="add-circle-outline" size={125} color="white" />
+                                <Ionicons name="add-circle-outline" size={100} color="white" />
                             </CustomButton>
                         </View>
                         
@@ -39,9 +39,8 @@ const JarScreen = (props) => {
                     <CustomButton 
                         style={{backgroundColor: Colors.accentColor, padding: 10}} 
                         onPress={resetJarHandler}
-                        icon={<Ionicons name="reload" size={25} color="white"/>}
                     >
-                        Reset Jar
+                        <Ionicons name="reload" size={25} color="white"/>Reset Jar
                     </CustomButton>
                     
                 </View>
@@ -52,7 +51,7 @@ const JarScreen = (props) => {
 
 export const jarOptions = (navData) => {
 	return {
-		headerTitle: "Penny Jar",
+		headerTitle: "The Penny Jar",
 	};
 };
 
@@ -88,7 +87,6 @@ const styles = StyleSheet.create({
     },
     addButton : {
         backgroundColor: "transparent",
-        alignItems: "center"
 
     },
     buttonContainer: {

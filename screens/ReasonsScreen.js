@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ScrollView, StyleSheet, FlatList} from 'react-native';
+import { View, Text, StyleSheet, FlatList} from 'react-native';
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import CustomHeaderButton from "../components/CustomHeaderButton/CustomHeaderButton";
 import ReasonItem from '../components/ReasonItem/ReasonItem';

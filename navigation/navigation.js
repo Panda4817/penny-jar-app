@@ -84,7 +84,7 @@ const tabsOptions =
 		? {
 				labelStyle: {
 					fontFamily: "open-sans-bold",
-					padding: 3,
+					padding: 1,
 				},
 				activeTintColor: "white",
 				inactiveTintColor: "lightgray",

@@ -32,20 +32,20 @@ const styles = StyleSheet.create({
     outContainer:{
         overflow: "hidden",
         borderRadius: 10,
-    },
-    container: {
+        margin: 5,
         shadowColor: 'black',
-        shadowOffset: {width: 0, height: 2},
+        shadowOffset: {width: 0, height: 3},
         shadowRadius: 6,
-        shadowOpacity: 0.26,
+        shadowOpacity: 0.30,
         elevation: 5,
         backgroundColor: Colors.primaryColor,
-        padding: 20,
-        borderRadius: 10,
-        justifyContent: "center",
+    },
+    container: {
+        padding: 10,
+        justifyContent: "space-between",
         alignItems: "center",
         flex: 1,
-        flexDirection: "column"
+        flexDirection: "row"
     },
     text: {
         fontFamily: "open-sans",

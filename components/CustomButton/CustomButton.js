@@ -10,8 +10,7 @@ const CustomButton = props => {
     return (
         <View style={styles.viewContainer}>
             <ButtonComponent onPress={props.onPress} activeOpacity={0.7}>
-                <View style={{...styles.buttonContainer, ...props.style}}>
-                    {props.icon}
+                <View style={{...props.style}}>
                     <Text style={styles.buttonText}>
                         {props.children}
                     </Text>
@@ -24,15 +23,9 @@ const CustomButton = props => {
 
 const styles = StyleSheet.create({
     viewContainer: {
-        borderRadius: 100,
-        overflow: "hidden"
+        borderRadius: 10,
+        overflow: "hidden",
 
-    },
-    buttonContainer: {
-        flex: 1,
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
     },
     buttonText: {
         color: 'white',
