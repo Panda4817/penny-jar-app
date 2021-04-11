@@ -1,13 +1,12 @@
-import { ADD_PENNY, RESET_JAR, ADD_REASON, DELETE_REASON } from "./actions";
+import { ADD_PENNY, RESET_JAR, ADD_REASON, DELETE_REASON, FETCH_STATE } from "./actions";
 import 'react-native-get-random-values';
-import { v4 as uuidv4 } from 'uuid';
 
 const initialState = {
     pennies: 0,
-    reasons: [{id: uuidv4(), text: "test reason"}]
+    reasons: []
 }
 
-const jarReducer = (state = initialState, action) => {
+export default (state = initialState, action) => {
     let index;
     switch (action.type) {
         case ADD_PENNY:
@@ -26,7 +25,7 @@ const jarReducer = (state = initialState, action) => {
             } else {
                 return {
                     ...state,
-                    reasons: [...state.reasons, {id: uuidv4(), text: action.reason}]
+                    reasons: [...state.reasons, {id: action.id, text: action.reason}]
                 };
             }
         case RESET_JAR:
@@ -50,9 +49,12 @@ const jarReducer = (state = initialState, action) => {
                     ...state
                 }
             };
+        case FETCH_STATE:
+            return {
+                pennies: action.state.pennies,
+                reasons: action.state.reasons
+            }
         default:
             return state;
     }
 }
-
-export default jarReducer;

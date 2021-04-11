@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { View, ScrollView, StyleSheet, TextInput, Dimensions} from 'react-native';
+import { View, ScrollView, StyleSheet, TextInput, Dimensions, ActivityIndicator } from 'react-native';
 import Colors from '../constants/Colors';
 import CustomButton from '../components/CustomButton/CustomButton';
 import { useDispatch } from "react-redux";
@@ -7,18 +7,20 @@ import { addReason } from "../store/actions";
 
 const AddReasonScreen = (props) => {
     const { navigation } = props;
-    const [input, setInput] = useState();
+    const [input, setInput] = useState("");
 
     const dispatch = useDispatch();
     const addReasonHandler = () => {
-		dispatch(addReason(input));
-        navigation.navigate("Reasons");
+        if (input.length > 0){
+            dispatch(addReason(input));
+            setInput();
+            navigation.navigate("Reasons");
+        }
 	};
 
     const inputHandler = (inputText) => {
         setInput(inputText);
     }
-
     return (
         <ScrollView contentContainerStyle={styles.screen}>
             <View style={styles.inputContainer}>
@@ -30,13 +32,18 @@ const AddReasonScreen = (props) => {
                     onChangeText={inputHandler}
                     value={input}
                     placeholder="Enter your reason"
+                    maxLength={30}
                 />
+                
                 <CustomButton
                     onPress={addReasonHandler}
                     style={styles.submitButton}
                 >
-                    Submit
+                Submit
                 </CustomButton> 
+                    
+                
+                
             </View>
         </ScrollView>
     )
@@ -50,7 +57,6 @@ export const addReasonOptions = (navData) => {
 
 const styles = StyleSheet.create({
     screen: {
-        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         
@@ -61,7 +67,7 @@ const styles = StyleSheet.create({
         shadowRadius: 6,
         shadowOpacity: 0.26,
         elevation: 5,
-        backgroundColor: "white",
+        backgroundColor: Colors.primaryColor,
         padding: 20,
         borderRadius: 10,
         margin: 20
@@ -73,7 +79,8 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 10,
         marginVertical: 10,
-        padding: 10
+        padding: 10,
+        backgroundColor: "white"
     },
     submitButton: {
         backgroundColor: Colors.accentColor,

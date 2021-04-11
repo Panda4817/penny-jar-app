@@ -41,6 +41,7 @@ export const reasonsOptions = (navData) => {
 					onPress={() => {
 						navData.navigation.navigate("AddReason");
 					}}
+					name="entypo"
 				/>
 			</HeaderButtons>
 		),

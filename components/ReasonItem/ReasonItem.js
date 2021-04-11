@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { View, Text, StyleSheet} from 'react-native';
 import { Ionicons } from '@expo/vector-icons'; 
 import Colors from "../../constants/Colors";
@@ -8,14 +8,14 @@ import { deleteReason } from "../../store/actions";
 
 const ReasonItem = (props) => {
     const dispatch = useDispatch();
-    const deleteReasonHandler = useCallback(() => {
+    const deleteReasonHandler = () => {
 		dispatch(deleteReason(props.item.id));
-	}, [dispatch]);
+	};
 
     return (
         <View style={styles.outContainer}>
             <View style={styles.container}>
-                <Text style={styles.text}>{props.item.text}</Text>
+                <Text style={styles.text} numberOfLines={1}>{props.item.text}</Text>
                 <CustomButton
                     style={styles.delButton} 
                     onPress={deleteReasonHandler}
@@ -45,7 +45,8 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         alignItems: "center",
         flex: 1,
-        flexDirection: "row"
+        flexDirection: "row",
+        flexWrap: "wrap"
     },
     text: {
         fontFamily: "open-sans",
